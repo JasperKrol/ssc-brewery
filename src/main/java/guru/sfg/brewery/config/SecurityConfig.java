@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.LdapShaPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 /**
  * Created by jt on 6/13/20.
@@ -36,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     PasswordEncoder passwordEncoder(){
-        return new LdapShaPasswordEncoder();
+        return new StandardPasswordEncoder();
     }
 
     @Override
@@ -47,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("ADMIN")
                 .and()
                 .withUser("user")
-                .password("{SSHA}LT+zqH2PO+ALzl36ULU96DR/uJUSkrSi+7646Q==")
+                .password("2c32a23150c06d199050ea346af1a1f05c525a71d7a1a23e75888a43381458f4eb5e4cafcf5b365a")
                 .roles("USER");
 
         auth.inMemoryAuthentication().withUser("scott").password("tiger").roles("CUSTOMER");
@@ -70,19 +71,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //
 //        return new InMemoryUserDetailsManager(admin, user);
 //    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
