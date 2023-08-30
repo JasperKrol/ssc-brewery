@@ -15,6 +15,18 @@ public class PasswordEncodingTests {
     static final String PASSWORD = "password";
 
     @Test
+    void testBcrypt15() {
+
+        // depricated en for legacy
+        PasswordEncoder bcrypt = new BCryptPasswordEncoder(15);
+
+        System.out.println(bcrypt.encode(PASSWORD));
+        System.out.println(bcrypt.encode(PASSWORD));
+        System.out.println(bcrypt.encode("tiger"));
+
+    }
+
+    @Test
     void testBcrypt() {
 
         // depricated en for legacy
