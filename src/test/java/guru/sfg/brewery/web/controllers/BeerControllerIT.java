@@ -14,6 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 public class BeerControllerIT extends BaseIT{
 
+
     @Test
     void initCreationFormWithSpring() throws Exception {
         mockMvc.perform(get("/beers/new").with(httpBasic("spring", "guru")))
