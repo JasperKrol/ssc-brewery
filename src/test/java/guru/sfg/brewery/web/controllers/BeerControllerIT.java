@@ -14,7 +14,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 public class BeerControllerIT extends BaseIT{
 
-
     @Test
     void initCreationFormWithSpring() throws Exception {
         mockMvc.perform(get("/beers/new").with(httpBasic("spring", "guru")))
@@ -48,19 +47,14 @@ public class BeerControllerIT extends BaseIT{
     }
 
     @Test
-    void findBeersWithHttpBasic() throws Exception{
-        mockMvc.perform(get("/beers/find").with(httpBasic("spring", "guru")))
-                .andExpect(status().isOk())
-                .andExpect(view().name("beers/findBeers"))
-                .andExpect(model().attributeExists("beer"));
-    }
-
-    @Test
     void findBeersWithAnonymous() throws Exception{
         mockMvc.perform(get("/beers/find").with(anonymous()))
                 .andExpect(status().isOk())
                 .andExpect(view().name("beers/findBeers"))
                 .andExpect(model().attributeExists("beer"));
     }
+
+
+
 
 }

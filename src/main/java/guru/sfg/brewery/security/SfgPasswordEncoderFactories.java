@@ -16,10 +16,10 @@ public class SfgPasswordEncoderFactories {
         String encodingId = "bcrypt15";
         Map<String, PasswordEncoder> encoders = new HashMap<>();
         encoders.put(encodingId, new BCryptPasswordEncoder(15));
+        encoders.put("bcrypt", new BCryptPasswordEncoder());
         encoders.put("ldap", new org.springframework.security.crypto.password.LdapShaPasswordEncoder());
         encoders.put("noop", org.springframework.security.crypto.password.NoOpPasswordEncoder.getInstance());
         encoders.put("sha256", new org.springframework.security.crypto.password.StandardPasswordEncoder());
-        encoders.put("bcrypt", new BCryptPasswordEncoder());
 
         return new DelegatingPasswordEncoder(encodingId, encoders);
     }
