@@ -13,6 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Builder
 public class User {
 
     @Id
@@ -22,15 +23,21 @@ public class User {
     private String username;
     private String password;
 
+    @Singular
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "user_authority",
         joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
         inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID")})
     private Set<Authority> authorities;
 
+    // if yuou add @Builder, values are null, hence you need to annotate with Builder.Default
+    @Builder.Default
     private Boolean accountNonExpired = true;
+    @Builder.Default
     private Boolean accountNonLocked = true;
+    @Builder.Default
     private Boolean credentialsNonExpired = true;
+    @Builder.Default
     private Boolean enabled = true;
 
 }
