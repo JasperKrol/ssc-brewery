@@ -33,8 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and().csrf().disable();
 
-                //h2 console config
-                http.headers().frameOptions().sameOrigin();
+
+        // h2 options / config
+        http.headers().frameOptions().sameOrigin();
     }
 
     @Bean
@@ -75,19 +76,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //
 //        return new InMemoryUserDetailsManager(admin, user);
 //    }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
