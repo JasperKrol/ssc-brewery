@@ -8,12 +8,12 @@ import java.util.Set;
 /**
  * Created by jt on 6/21/20.
  */
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
 @Setter
-@Entity
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
+@Entity
 public class User {
 
     @Id

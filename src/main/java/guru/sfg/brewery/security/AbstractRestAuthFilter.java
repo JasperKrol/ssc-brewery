@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by jt on 6/19/20.
+ * Created by jt on 6/20/20.
  */
 @Slf4j
 public abstract class AbstractRestAuthFilter extends AbstractAuthenticationProcessingFilter {
@@ -75,11 +75,11 @@ public abstract class AbstractRestAuthFilter extends AbstractAuthenticationProce
         String userName = getUsername(request);
         String password = getPassword(request);
 
-        if (userName == null){
+        if (userName == null) {
             userName = "";
         }
 
-        if (password == null){
+        if (password == null) {
             password = "";
         }
 

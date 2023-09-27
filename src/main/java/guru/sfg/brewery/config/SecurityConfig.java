@@ -22,13 +22,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public RestHeaderAuthFilter restHeaderAuthFilter(AuthenticationManager authenticationManager) {
+    public RestHeaderAuthFilter restHeaderAuthFilter(AuthenticationManager authenticationManager){
         RestHeaderAuthFilter filter = new RestHeaderAuthFilter(new AntPathRequestMatcher("/api/**"));
         filter.setAuthenticationManager(authenticationManager);
         return filter;
     }
 
-    public RestUrlAuthFilter restUrlAuthFilter(AuthenticationManager authenticationManager) {
+    public RestUrlAuthFilter restUrlAuthFilter(AuthenticationManager authenticationManager){
         RestUrlAuthFilter filter = new RestUrlAuthFilter(new AntPathRequestMatcher("/api/**"));
         filter.setAuthenticationManager(authenticationManager);
         return filter;
@@ -40,22 +40,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         UsernamePasswordAuthenticationFilter.class)
                 .csrf().disable();
 
-        http.addFilterBefore(restUrlAuthFilter(authenticationManager()),
-                UsernamePasswordAuthenticationFilter.class);
+                http.addFilterBefore(restUrlAuthFilter(authenticationManager()),
+                        UsernamePasswordAuthenticationFilter.class);
 
-        http
+                http
                 .authorizeRequests(authorize -> {
                     authorize
+                            .antMatchers("/h2-console/**").permitAll() //do not use in production!
                             .antMatchers("/", "/webjars/**", "/login", "/resources/**").permitAll()
                             .antMatchers("/beers/find", "/beers*").permitAll()
                             .antMatchers(HttpMethod.GET, "/api/v1/beer/**").permitAll()
                             .mvcMatchers(HttpMethod.GET, "/api/v1/beerUpc/{upc}").permitAll();
-                })
+                } )
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().and()
                 .httpBasic();
+
+                //h2 console config
+                http.headers().frameOptions().sameOrigin();
     }
 
     @Bean
@@ -94,6 +98,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //
 //        return new InMemoryUserDetailsManager(admin, user);
 //    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
