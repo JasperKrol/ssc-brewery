@@ -70,15 +70,13 @@ public class User implements UserDetails, CredentialsContainer {
         return this.enabled;
     }
 
+    // if yuou add @Builder, values are null, hence you need to annotate with Builder.Default
     @Builder.Default
     private Boolean accountNonExpired = true;
-
     @Builder.Default
     private Boolean accountNonLocked = true;
-
     @Builder.Default
     private Boolean credentialsNonExpired = true;
-
     @Builder.Default
     private Boolean enabled = true;
 
