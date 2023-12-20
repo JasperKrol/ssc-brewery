@@ -36,4 +36,5 @@ public interface BeerOrderService {
     BeerOrderPagedList listOrders(Pageable pageable);
 
     BeerOrderDto getOrderById(UUID orderId);
+
 }

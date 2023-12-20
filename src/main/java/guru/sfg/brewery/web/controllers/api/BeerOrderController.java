@@ -17,6 +17,7 @@
 
 package guru.sfg.brewery.web.controllers.api;
 
+import guru.sfg.brewery.domain.security.User;
 import guru.sfg.brewery.security.perms.BeerOrderCreatePermission;
 import guru.sfg.brewery.security.perms.BeerOrderPickupPermission;
 import guru.sfg.brewery.security.perms.BeerOrderReadPermission;
@@ -25,6 +26,7 @@ import guru.sfg.brewery.web.model.BeerOrderDto;
 import guru.sfg.brewery.web.model.BeerOrderPagedList;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -47,7 +49,7 @@ public class BeerOrderController {
 
     @BeerOrderReadPermission
     @GetMapping("orders")
-    public BeerOrderPagedList listOrders(@PathVariable("customerId") UUID customerId,
+    public BeerOrderPagedList listOrders(@AuthenticationPrincipal User user, @PathVariable("customerId") UUID customerId,
                                          @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
                                          @RequestParam(value = "pageSize", required = false) Integer pageSize){
 
