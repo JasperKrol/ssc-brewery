@@ -77,9 +77,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return SfgPasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-   // @Override
- //   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       // auth.userDetailsService(this.jpaUserDetailsService).passwordEncoder(passwordEncoder());
+    // @Override
+    //   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    // auth.userDetailsService(this.jpaUserDetailsService).passwordEncoder(passwordEncoder());
 
 //        auth.inMemoryAuthentication()
 //                .withUser("spring")
@@ -91,7 +91,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .roles("USER");
 //
 //        auth.inMemoryAuthentication().withUser("scott").password("{bcrypt15}$2a$15$baOmQtw8UqWZRDQhMFPFj.xhkkWveCTQHe4OBdr8yw8QshejiSbI6").roles("CUSTOMER");
-  //  }
+    //  }
 
     //    @Override
 //    @Bean

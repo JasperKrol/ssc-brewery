@@ -7,9 +7,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by jt on 7/20/20.
- */
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -17,6 +14,8 @@ import java.sql.Timestamp;
 @Setter
 @Entity
 public class LoginFailure {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

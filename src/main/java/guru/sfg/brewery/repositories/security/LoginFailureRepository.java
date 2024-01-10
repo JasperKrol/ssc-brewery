@@ -7,10 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * Created by jt on 7/20/20.
- */
-public interface LoginFailureRepository extends JpaRepository<LoginFailure, Integer> {
+public interface LoginFailureRepository extends JpaRepository <LoginFailure, Integer> {
 
     List<LoginFailure> findAllByUserAndCreatedDateIsAfter(User user, Timestamp timestamp);
 }
